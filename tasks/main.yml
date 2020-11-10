@@ -10,6 +10,24 @@
     name: elasticsearch
     state: "{{ elasticsearch_package_state }}"
 
+- name: Fix GC configuration
+  lineinfile:
+    path: /etc/elasticsearch/jvm.options
+    state: absent
+    regexp: '^-XX:+UseConcMarkSweepGC'
+
+- name: Fix GC configuration
+  lineinfile:
+    path: /etc/elasticsearch/jvm.options
+    state: absent
+    regexp: '^-XX:CMSInitiatingOccupancyFraction=75'
+
+- name: Fix GC configuration
+  lineinfile:
+    path: /etc/elasticsearch/jvm.options
+    state: absent
+    regexp: '^-XX:+UseCMSInitiatingOccupancyOnly'
+
 - name: Configure Elasticsearch.
   template:
     src: "{{ item | basename }}.j2"
