@@ -14,7 +14,7 @@
   lineinfile:
     path: /etc/elasticsearch/jvm.options
     state: absent
-    regexp: '^-XX:+UseConcMarkSweepGC'
+    regexp: '^-XX:\+UseConcMarkSweepGC'
 
 - name: Fix GC configuration
   lineinfile:
@@ -26,7 +26,7 @@
   lineinfile:
     path: /etc/elasticsearch/jvm.options
     state: absent
-    regexp: '^-XX:+UseCMSInitiatingOccupancyOnly'
+    regexp: '^-XX:\+UseCMSInitiatingOccupancyOnly'
 
 - name: Configure Elasticsearch.
   template:
